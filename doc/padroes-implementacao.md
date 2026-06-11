@@ -4,28 +4,41 @@ Este guia estabelece diretrizes de nomenclatura e formatação para o desenvolvi
 
 O objetivo dessas diretrizes é promover uma padronização no código, facilitando a leitura, manutenção e colaboração entre os membros da equipe de desenvolvimento. Além disso, a consistência na nomenclatura e formatação ajuda a reduzir erros e garantir a qualidade do código produzido.
 
-# Sumário
+## Sumário
 
-- [Nomenclatura](#nomenclatura)
-  - [Componentes](#nomenclatura_componentes)
-  - [Classes de Serviço](#classes_servico)
-  - [Interfaces](#interfaces)
-- [Formatação](#formatacao)
-  - [Indentação e Alinhamento](#indentacao_alinhamento)
-  - [Aspas](#aspas)
-  - [Ponto e Vírgula](#ponto_virgula)
-  - [Espaços](#espacos)
-  - [Parênteses](#parenteses)
-  - [Props](#props)
-  - [Tags](#tags)
-  - [Comprimento da Linha](#comprimento_linha)
-  - [Funções](#funcoes)
-  - [Componentes](#componentes)
-  - [Variáveis e Parâmetros](#variaveis_parametros)
+- [Padrões de Implementação](#padrões-de-implementação)
+	- [Sumário](#sumário)
+	- [Nomenclatura](#nomenclatura)
+		- [Nomeação de Componentes](#nomeação-de-componentes)
+		- [Classes de Serviço](#classes-de-serviço)
+		- [Interfaces](#interfaces)
+	- [Formatação](#formatação)
+		- [Indentação e Alinhamento](#indentação-e-alinhamento)
+		- [Aspas](#aspas)
+		- [Ponto e Vírgula](#ponto-e-vírgula)
+		- [Espaços](#espaços)
+		- [Parênteses](#parênteses)
+		- [Props](#props)
+		- [Tags](#tags)
+		- [Comprimento da linha](#comprimento-da-linha)
+		- [Funções](#funções)
+		- [Formato de Componentes](#formato-de-componentes)
+		- [Variáveis e Parâmetros](#variáveis-e-parâmetros)
+	- [Eficiência e performance da aplicação](#eficiência-e-performance-da-aplicação)
+		- [`useMemo` e `useCallback`](#usememo-e-usecallback)
+		- [`useEffect`](#useeffect)
+		- [Estados Locais](#estados-locais)
+		- [Hooks de Serviço (`useGetAll`, `useGet`)](#hooks-de-serviço-usegetall-useget)
+		- [Resumo de Boas Práticas](#resumo-de-boas-práticas)
+	- [Documentação e Organização](#documentação-e-organização)
+		- [Complexidade Cognitiva](#complexidade-cognitiva)
+		- [Estrutura de Comentários](#estrutura-de-comentários)
+		- [Categorização em Interfaces](#categorização-em-interfaces)
+		- [Documentação de componentes](#documentação-de-componentes)
 
-# Nomenclatura <a name="nomenclatura"></a>
+## Nomenclatura
 
-## Componentes <a name="nomenclatura_componentes"></a>
+### Nomeação de Componentes
 
 - Utilize _`PascalCase`_ para nomear os componentes;
 - Omita preposições nos nomes dos componentes. Por exemplo “Barra de Progresso”, deverá ser `BarraProgresso` ;
@@ -34,33 +47,34 @@ O objetivo dessas diretrizes é promover uma padronização no código, facilita
 - O arquivo em que o componente é implementado deve ser chamado `index.tsx` ;
 - Nomeie o diretório do componente com o mesmo nome do componente.
 
-## Classes de Serviço <a name="classes_servico"></a>
+### Classes de Serviço
 
 - Utilize `PascalCase` para nomear as classes de serviço.
 - Nomeie o serviço adicionando o sufixo `Service` ao nome do recurso da _API_ que será consumido. Por exemplo, `InstituicaoService`, para o recurso "Instituição".
 
-## Interfaces <a name="interfaces"></a>
+### Interfaces
 
 - Modelo
 
-  - Utilize _`PascalCase`_ para nomear as interfaces de modelo precedidos por um “i” minúsculo.
-  - Nomeie a interface com o nome da entidade que está sendo definida pela interface. Por exemplo, ao se tratar da entidade Inconsistência de Ensino, use: `iInconsistenciaEnsino`.
+  - Utilize _`PascalCase`_ para nomear as interfaces de modelo.
+  - Nomeie a interface com o nome da entidade que está sendo definida pela interface. Por exemplo, ao se tratar da entidade Inconsistência de Ensino, use: `InconsistenciaEnsino`.
+  - Nomeie interfaces de submissão de dados adicionando o sufixo _`Submit`_. Por exemplo, ao se tratar da entidade Inconsistência de Ensino, use: `InconsistenciaEnsinoSubmit`.
 
 - Props
 
   - Utilize o mesmo nome do componente sucedido de “Props”. Por exemplo `BrBarraProgressoProps`, para o componente `BrBarraProgresso`.
-  - O arquivo em que as props são definidas deve ser nomeado com o prefixo “i” + o nome do componente. Por exemplo `BrBarraProgressoProps` deve ser salvo em um arquivo chamado `iBrBarraProgresso`.
+  - O arquivo em que as props são definidas deve ser nomeado com o nome do componente. Por exemplo `BrBarraProgressoProps` deve ser salvo em um arquivo chamado `BrBarraProgresso.ts`.
 
 - Filtros de Serviço
 
   - Nomeio o filtro adicionando o sufixo `Filter` ao nome do serviço que será filtrado. Por exemplo, `InstituicaoFilter`, para `InstituicaoService`.
 
 - Interface de Serviço
-  - Devem ser nomeadas utilizando o padrão `iNomeService`, onde "Nome" representa o recurso da API que será consumido. Por exemplo, se estamos lidando com o recurso "Instituição", a interface de serviço correspondente seria nomeada como `iInstituicaoService`.
+  - Devem ser nomeadas utilizando o padrão `NomeService`, onde "Nome" representa o recurso da API que será consumido. Por exemplo, se estamos lidando com o recurso "Instituição", a interface de serviço correspondente seria nomeada como `InstituicaoService`.
 
-# Formatação <a name="formatacao"></a>
+## Formatação
 
-## Indentação e Alinhamento <a name="indentacao_alinhamento"></a>
+### Indentação e Alinhamento
 
 - Utilize _tabs_ em vez de espaços para a indentação.
 - Configure o tamanho da tabulação como **4 espaços**.
@@ -69,39 +83,39 @@ O objetivo dessas diretrizes é promover uma padronização no código, facilita
 ```jsx
 // ruim
 <Componente
-	parametro1="Parametro1"
-	parametro2="Parametro2" />;
+    parametro1="Parametro1"
+    parametro2="Parametro2" />;
 
 // ruim
 <Componente
-	parametro1="Parametro1"
-	parametro2="Parametro2"
-  	/>;
+    parametro1="Parametro1"
+    parametro2="Parametro2"
+    />;
 
 // bom
 <Componente
-	parametro1="Parametro1"
-	parametro2="Parametro2"
+    parametro1="Parametro1"
+    parametro2="Parametro2"
 />;
 ```
 
-## Aspas <a name="aspas"></a>
+### Aspas
 
 Utilize **aspas duplas** para strings, em vez de aspas simples.
 
 ```jsx
 // ruim
 <BrButton
-	size='small'
+    size='small'
 />;
 
 // bom
 <BrButton
-	size="small"
+    size="small"
 />;
 ```
 
-## Ponto e Vírgula <a name="ponto_virgula"></a>
+### Ponto e Vírgula
 
 Sempre insira um ponto e vírgula no final de cada instrução. Por exemplo:
 
@@ -109,13 +123,13 @@ Sempre insira um ponto e vírgula no final de cada instrução. Por exemplo:
 const { user } = useStore();
 
 useEffect(() => {
-	loadTable();
+ loadTable();
 }, []);
 ```
 
-## Espaços <a name="espacos"></a>
+### Espaços
 
-- Sempre inclua um único espaço no fechamento de suas tags que não recebem `childrens`.
+- Sempre inclua um único espaço no fechamento de suas tags que não recebem `childrens`.
 
 ```jsx
 // ruim
@@ -146,19 +160,19 @@ const { user } = useStore();
 
 ```jsx
 // ruim
-<BrTable
-	data={ instituicoes }
-	title="Instituições"
+<BrTableAnt
+    data={ instituicoes }
+    title="Instituições"
 />
 
 // bom
-<BrTable
-	data={instituicoes}
-	title="Instituições"
+<BrTableAnt
+    data={instituicoes}
+    title="Instituições"
 />
 ```
 
-## Parênteses <a name="parenteses"></a>
+### Parênteses
 
 - Sempre inclua parênteses em torno do parâmetro de uma _`arrow function`_.
 
@@ -166,63 +180,63 @@ Exemplo:
 
 ```tsx
 const minhaFuncao = (parametro) => {
-	return parametro + 1;
+    return parametro + 1;
 };
 ```
 
-## Props <a name="props"></a>
+### Props
 
-- Sempre use `camelCase` para nome de props.
+- Sempre use `camelCase` para nome de props.
 
 ```jsx
 // ruim
 <Componente
-	UserName="hello"
-	phone_number={12345678}
+    UserName="hello"
+    phone_number={12345678}
 />
 
 // bom
 <Componente
-	userName="hello"
-	phoneNumber={12345678}
+    userName="hello"
+    phoneNumber={12345678}
 />
 ```
 
-- Quando o valor Booleano for `true`, ele pode ser omitido.
+- Quando o valor Booleano for `true`, ele pode ser omitido.
 
 ```jsx
 // ruim
 <Component
-	hidden={true}
+    hidden={true}
 />
 
 // bom
 <Component
-  	hidden
+    hidden
 />
 ```
 
-- Sempre que puder, evite usar `index` como `key` de props. Opte por um `ID`.
+- Sempre que puder, evite usar `index` como `key` de props. Opte por um `ID`.
 
 ```jsx
 // ruim
-{todos.map((todo, index) =>
-	<Todo
-		{...todo}
-		key={index}
-	/>
-)}
+{todos.map((todo, index) => (
+    <Todo
+        {...todo}
+        key={index}
+    />
+))}
 
 // bom
-{todos.map(todo => (
-	<Todo
-		{...todo}
-		key={todo.id}
-  	/>
+{todos.map((todo) => (
+    <Todo
+        {...todo}
+        key={todo.id}
+    />
 ))}
 ```
 
-## Tags <a name="tags"></a>
+### Tags
 
 - Sempre utilize tags **auto-fecháveis** para elementos que não possuem filhos.
 
@@ -237,7 +251,7 @@ const minhaFuncao = (parametro) => {
 <img src="..."></img>
 
 // bom
-<img src="..."/>
+<img src="..." />
 ```
 
 - Quando o elemento **HTML** ou **JSX** tiver mais de uma propriedade, feche a tag em uma nova linha.
@@ -245,15 +259,15 @@ const minhaFuncao = (parametro) => {
 ```jsx
 // ruim
 <BrButton
-	secondary
-	icon="times"
-	circle />
+   secondary
+   icon="times"
+   circle />
 
 // bom
 <BrButton
-	secondary
-	icon="times"
-	circle
+   secondary
+   icon="times"
+   circle
 />
 ```
 
@@ -262,24 +276,41 @@ const minhaFuncao = (parametro) => {
 ```jsx
 // ruim
 <BrButton
-	secondary
-		icon="times"
-		circle
+  secondary
+    icon="times"
+    circle
 />
 
 // bom
 <BrButton
-	secondary
-	icon="times"
-	circle
+    secondary
+    icon="times"
+    circle
 />
 ```
 
-## Comprimento da linha <a name="comprimento_linha"></a>
+### Comprimento da linha
 
 Recomenda-se que as linhas não ultrapassem em excesso `80` caracteres de comprimento.
 
-## Funções <a name="funcoes"></a>
+```typescript
+// ruim
+const { handleSubmit, control, reset, getValues, register, setValue, setError, setFocus } = useForm({});
+
+// bom
+const {
+    handleSubmit,
+    control,
+    reset,
+    getValues,
+    register,
+    setValue,
+    setError,
+    setFocus,
+} = useForm({});
+```
+
+### Funções
 
 - Ao declarar funções sempre opte pela declaração tradicional de função usando a palavra reservada `function` .
 
@@ -289,12 +320,12 @@ const soma = (a: number, b: number): number => a + b;
 
 // ruim
 const soma = function(a: number, b: number): number => {
-	return a + b;
+ return a + b;
 }
 
 // bom
 function soma(a: number, b: number): number {
-	return a + b;
+ return a + b;
 }
 ```
 
@@ -305,12 +336,12 @@ function soma(a: number, b: number): number {
 ```tsx
 // ruim
 function soma(a, b): number {
-	return a + b;
+ return a + b;
 }
 
 // bom
 function soma(a: number, b: number): number {
-	return a + b;
+ return a + b;
 }
 ```
 
@@ -318,27 +349,27 @@ function soma(a: number, b: number): number {
 
 ```jsx
 // ruim
-function soma(a: number, b: number){
-	return a + b;
+function soma(a: number, b: number) {
+ return a + b;
 }
 
 // bom
 function soma(a: number, b: number): number {
-	return a + b;
+ return a + b;
 }
 
 // ruim
 function helloWorld() {
-	console.log("Olá, Mundo!");
+ console.log("Olá, Mundo!");
 }
 
 // bom
 function helloWorld(): void {
-	console.log("Olá, Mundo!");
+ console.log("Olá, Mundo!");
 }
 ```
 
-## Componentes <a name="componentes"></a>
+### Formato de Componentes
 
 - Ao implementar um componente _React_, **exporte-o** **diretamente na assinatura** da função que o define.
 
@@ -353,7 +384,7 @@ export default function BrButton(props: BrButtonProps): JSX.Element { ... }
 ```
 
 - Defina os componentes como **funções**.
-  - Por se tratar de funções, respeite as regras descritas na seção [funções](#funcoes). Use funções tradicionais e defina o tipo do retorno da função.
+  - Por se tratar de funções, respeite as regras descritas na seção [funções](#funções). Use funções tradicionais e defina o tipo do retorno da função.
 
 ```jsx
 // ruim
@@ -365,7 +396,7 @@ export default BrButton;
 export default function BrButton(props: BrButtonProps): JSX.Element { ... }
 ```
 
-### Variáveis e Parâmetros <a name="variaveis_parametros"></a>
+### Variáveis e Parâmetros
 
 - Sempre defina o **tipo da variável** no momento da declaração.
 
@@ -398,4 +429,300 @@ let contador: number = 0;
 ```tsx
 // Evite isso
 let variavelNaoUtilizada: string;
+```
+
+## Eficiência e performance da aplicação
+
+- Use os **hooks do React** (`useMemo`, `useCallback`, `useEffect`, `useState`) de forma consciente.
+    O uso correto ajuda a **evitar renderizações desnecessárias**, **reduzir cálculos repetidos** e **melhorar o desempenho** da aplicação.
+
+### `useMemo` e `useCallback`
+
+Use `useMemo` para **memorizar dados derivados** (listas, cálculos, objetos).
+Use `useCallback` para **memorizar funções** passadas como props, evitando recriações a cada renderização.
+
+```tsx
+// ruim
+function Cursos(): JSX.Element {
+    const { data } = useGetAll({ service: CursoService });
+
+    function parseCursos(itens: any[]): any[] {
+        return itens.map((i) => ({ ...i, tipo: i.tipo.nome }));
+    }
+   
+    const cursos = parseCursos(data?.data.items ?? []);
+   
+    return <TabelaCursos data={cursos} />;
+}
+
+// bom
+function Cursos(): JSX.Element {
+    const { data } = useGetAll({ service: CursoService });
+   
+    const parseCursos = useCallback((itens: Curso[]): ParsedCurso[] => {
+        return itens.map((i) => ({ ...i, tipo: i.tipo.nome }));
+    }, []);
+   
+    const cursos: ParsedCurso[] = useMemo(
+        () => parseCursos(data?.data.items ?? []),
+        [data, parseCursos]
+    );
+   
+    return <TabelaCursos data={cursos} />;
+}
+```
+
+### `useEffect`
+
+- Utilize `useEffect` apenas para **efeitos colaterais reais** (chamadas de API, timers, event listeners, etc).
+- **Evite efeitos que apenas sincronizam estados derivados**, pois podem gerar loops ou re-renderizações desnecessárias.
+
+```tsx
+// ruim
+useEffect(() => {
+    setContadorFiltrado(contador * 2);
+}, [contador]);
+
+// bom
+const contadorFiltrado = useMemo(() => contador * 2, [contador]);
+```
+
+### Estados Locais
+
+- **Mantenha o estado local enxuto.**
+    Não armazene no `useState` valores que podem ser derivados de outros estados ou dados da API.
+
+```tsx
+// ruim
+const [quantidade, setQuantidade] = useState<number>(0);
+
+useEffect(() => {
+    setQuantidade(dados.length);
+}, [dados]);
+
+// bom
+
+const quantidade = useMemo(() => dados.length, [dados]);
+```
+
+---
+
+### Hooks de Serviço (`useGetAll`, `useGet`)
+
+Prefira o uso dos hooks personalizados de serviço para requisições.
+Eles já controlam **cache**, **loading**, **refetch** e **tratamento de erros**, dispensando `useEffect` manuais.
+
+```tsx
+// ruim
+const [dados, setDados] = useState<any[]>([]);
+const [isLoading, setIsLoading] = useState<boolean>(true);
+
+useEffect(() => {
+    CursoService.getAll().then((res) => {
+        setDados(res.data);
+        setIsLoading(false);
+ });
+}, []);
+```
+
+```tsx
+// ruim
+const [dados, setDados] = useState<any[]>([]);
+const [isLoading, setIsLoading] = useState<boolean>(true);
+
+function getCursos(): Promise<void> => {
+    CursoService.getAll().then((res) => {
+        setDados(res.data);
+        setIsLoading(false);
+ });
+}
+
+```
+
+```tsx
+// bom
+const {
+ isPending: isLoadingAll,
+ data: dataAll,
+ refetchAll,
+} = useGetAll<CatalogoCurso>({
+ service: CursoCatalogoService,
+ filters: filterValues,
+});
+```
+
+### Resumo de Boas Práticas
+
+✅ **Faça**
+
+- Memorize funções e dados com `useCallback` e `useMemo`;
+- Prefira `useGetAll` e `useGet` para requisições;
+- Use `useEffect` apenas quando necessário;
+- Derive dados sempre que possível, sem criar novos estados.
+
+🚫 **Evite**
+
+- Usar `useEffect` para atualizar estados derivados;
+- Declarar funções dentro do componente sem `useCallback`;
+- Armazenar dados desnecessários em `useState`;
+- Criar múltiplos estados para informações relacionadas.
+
+## Documentação e Organização
+
+### Complexidade Cognitiva
+
+- **Evite funções muito longas,** quebre em funções utilitárias menores e mais específicas.
+- Se o código da implementação ultrapassar 100 linhas, quebre em demais arquivos (`services.ts`, `interfaces.ts`, `utils.ts`, etc...) de acordo com o [Padrão Arquitetural](organizacao-diretorios.md).
+- Interfaces que passem de 4 linhas devem ser colocadas em um arquivo `interfaces.ts` próprio.
+
+### Estrutura de Comentários
+
+Utilize **blocos de comentários padronizados** para segmentar responsabilidades dentro dos arquivos, facilitando a navegação e compreensão do código. Os comentários servem para **categorizar**, não para explicar funcionamento. Por exemplo:
+
+```tsx
+// -----------------------------
+// Estados Locais
+// -----------------------------
+const [loading, setLoading] = useState<boolean>(false);
+const [data, setData] = useState<Instituicao[]>([]);
+
+// -----------------------------
+// Hooks do React e Form
+// -----------------------------
+const { handleSubmit, control, reset } = useForm<InstituicaoFilter>();
+
+// -----------------------------
+// Query de Instituição
+// -----------------------------
+const { data: instituicoes, isLoading } = useInstituicaoQuery();
+
+// -----------------------------
+// Modais
+// -----------------------------
+const [showCadastroModal, setShowCadastroModal] = useState<boolean>(false);
+const [showEditModal, setShowEditModal] = useState<boolean>(false);
+const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
+const [showDetalhesModal, setShowDetalhesModal] = useState<boolean>(false);
+
+// -----------------------------
+// Funções Auxiliares
+// -----------------------------
+function handleEdit(id: number): void {
+    // lógica de edição
+}
+```
+
+### Categorização em Interfaces
+
+```tsx
+// -----------------------------
+// Interfaces de Modelo
+// -----------------------------
+interface Instituicao {
+    id: number;
+    nome: string;
+}
+
+// -----------------------------
+// Interfaces de Submissão
+// -----------------------------
+interface InstituicaoSubmit {
+    nome: string;
+}
+
+// -----------------------------
+// Interfaces de Filtro
+// -----------------------------
+interface InstituicaoFilter {
+    search?: string;
+    status?: boolean;
+}
+```
+
+- Na renderização, separe os modais do resto da página com o comentário `{/* Modais */}` para melhor legibilidade. Por exemplo:
+
+```tsx
+return (
+    <div className="container">
+        <div className="header">
+            <h1>Instituições</h1>
+            <BrButton onClick={() => setShowCadastroModal(true)}>
+                Nova Instituição
+            </BrButton>
+        </div>
+
+  {/* Modais */}
+
+  {showCadastroModal && (
+      <CadastroInstituicaoModal
+          isOpen={showCadastroModal}
+          onClose={closeAllModals}
+          onSuccess={handleSuccessAction}
+      />
+  )}
+
+  {showEditModal && selectedItem && (
+      <EditInstituicaoModal
+          isOpen={showEditModal}
+          instituicao={selectedItem}
+          onClose={closeAllModals}
+          onSuccess={handleSuccessAction}
+      />
+  )}
+ </div>
+);
+```
+
+### Documentação de componentes
+
+- Ao se criar um novo componente ou um código complexo para auxiliar na aplicação, há uma forma correta de se documentar este trecho de código, como segue o exemplo abaixo:
+
+```tsx
+/**
+ * Descrição breve do componente novo a ser criado
+ *
+ * // OPCIONAL CASO HAJA ALGUMA TIPAGEM GENÉRICA
+ * @template T Tipo dos dados retornados.
+ * 
+ * @author 
+ *   @liviaaVS // @ DO CRIADOR(A) DO COMPONENTE NOVO
+ *
+ * // @param {TIPO_DA_PROPRIEDADE} NOME_DA_PROPRIEDADE descrição breve da propriedade
+ * 
+ * @param {ComponenteNovoProps<T>} props
+ * @param {Service} props.service Instância do serviço.
+ * **Exemplo:** `PalavraService`, `UsuarioService`, etc.
+ * @param {Function} props.method Função do serviço a ser invocada.
+ * Pode ser um método padrão (ex.: `service.getAll`) ou um método personalizado (ex.: `service.meuMetodoCustomizado`) .
+ * 
+ * // [NOME_DA_PROPRIEDADE] acompanhado de colchetes significa OPCIONAL
+ * @param {Array} [props.args] Argumentos a serem passados para o método.
+ * @param {object} [props.options] Opções adicionais para o `useQuery`.
+ * 
+ * // @example `EXEMPLO DE VALOR DA PROPRIEDADE`
+ * @example
+ * `{ refetchOnWindowFocus: false }`
+ *
+ * // @returns {TIPO_DO_RETORNO} DESCRIÇÃO BREVE DO RETORNO DO COMPONENTE/FUNÇÃO
+ * @returns {object} Objeto com:
+ * - `isPending` — Estado da consulta
+ * - `data` — Dados retornados
+ * - `error` — Erro, se houver
+ * - `refetch()` — Função para refazer a consulta
+ * - `refetchAll()` — Função para invalidar o cache de todas as consultas do mesmo serviço
+ *
+ * @example // EXEMPLO PRÁTICO DE USO DO COMPONENTE/FUNÇÃO
+ * ```ts
+ * import { ComponenteNovo } from "@/ComponenteNovo";
+ * import PalavraService from "@/services/models/PalavraService";
+ *
+ * const { isPending, data, error, refetchAll } = ComponenteNovo<PalavraReservada[]>({
+ *   service: PalavraService,
+ *   method: PalavraService.getAll,
+ *   args: [{ limit: 20, offset: 0 }],
+ *   options: { refetchOnWindowFocus: false }
+ * });
+ * ```
+ */
+export default function ComponenteNovo(props: ComponenteProps): React.ReactNode => {...}
 ```
