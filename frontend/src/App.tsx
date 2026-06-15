@@ -3,14 +3,16 @@ import Login from './pages/login'
 import Cadastro from './pages/cadastro'
 import './App.css'
 import Feed from './pages/feed'
+import { AuthProvider } from './states/AuthContext'
 
 function App() {
 
   return (
     <>
       <BrowserRouter>
+        <AuthProvider>
         <Routes>
-          <Route 
+          <Route
           path="/login"
           element={<Login/>}
           />
@@ -23,6 +25,7 @@ function App() {
           element={<Feed/>}
           />
         </Routes>
+        </AuthProvider>
       </BrowserRouter>
     </>
   )
