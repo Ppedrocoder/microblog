@@ -8,7 +8,7 @@ export default function NavBar(props: NavBarProps) {
     
     return (
         <>  
-            <div className="z-20 grid grid-cols-1 w-full h-full">
+            <div className="z-20 grid grid-cols-1 w-full h-25 fixed top-0 left-0">
                 <div className="br-header compact grid-cols-3">
                     <div className="w-full h-full flex items-center justify-start pl-12">
                         <button className="br-button small circle" type="button" aria-label="Menu" data-toggle="menu" data-target="#main-navigation" id="menu-compact"><i className="fa fa-bars" aria-hidden="true"></i>
