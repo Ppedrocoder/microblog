@@ -12,17 +12,17 @@ export default function Postagem(props: PostagemProps) {
             <div className="p-4 transition-transform duration-300 ease-in-out hover:scale-105 cursor-pointer">
                 <img className="w-104 h-65 border border-transparent rounded-t-2xl" src={props.imagem} alt={props.titulo} />
                 <div className="br-modal medium w-104 justify-center items-center">
-                    <div className="w-full h-full flex flex-col justify-start items-start gap-2 p-4">
+                    <div className="w-full h-full flex flex-col justify-start gap-2 p-4">
                         <div className="w-full flex flex-row gap-12">  
                             <div className="w-full grid grid-cols-2 gap-12">
                                 <div className="w-full h-15">   
-                                    <h1 className=" !text-xl !font-bold w-50 mb-0">{props.titulo}</h1>
-                                    <h2 className=" !text-sm w-50 mt-0">{props.autor} - {props.dia}</h2>
+                                    <h1 className="leading-tight !text-xl !font-bold w-50 mb-0">{props.titulo}</h1>
+                                    <h2 className="text-semi-bold !text-sm w-50 h-5 mt-0">{props.autor} - {props.dia}</h2>
                                 </div>
                             </div>
                         </div>
-                        <p className="w-full overflow-hidden">{props.descricao}</p>
-                        <span className="border-2 br-divider w-full"></span>
+                        <p className="w-full overflow-hidden !text-sm">{props.descricao}</p>
+                        <span className="br-divider w-full"></span>
                     </div>
                 </div>
             </div>
