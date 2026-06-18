@@ -1,8 +1,8 @@
 export interface PostagemInterface{
     id: number;
-    autor: string;
+    username: string;
     imagem: string;
-    dia: string;
+    publicado_em: string;
     titulo: string;
     descricao: string;
 }
