@@ -1,4 +1,4 @@
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import NavBar from "../../components/NavBar";
 import { useAuth } from "../../hooks/useAuth";
 import Postagem from "../../components/Postagem";
@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {api} from "../../services/ApiService";
 import type { PostagemInterface } from "../../interfaces/PostagemInterface";
+import Footer from "../../components/Footer";
 
 
 const schema = yup.object().shape({
@@ -79,7 +80,7 @@ export default function Feed() {
     return (
         <>  
             <div className="w-full h-screen overflow-y-auto flex flex-col ">
-                <NavBar action={handleLogout} nome={user?.username || "Usuário"} />
+                <NavBar nome={user?.username || "Usuário"} />
                 
                 <div className="relative w-full flex flex-1 flex-col items-center mt-25">
                     {showModal && (
@@ -133,6 +134,7 @@ export default function Feed() {
                     )}
                     <div className=" w-full grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 place-items-center gap-4 p-4">
                         {postagens.map((postagem: PostagemInterface) => (
+                            <Link to={`/postagem/${postagem.id}`}>
                             <Postagem 
                                 key={postagem.id}
                                 autor={postagem.autor.username}
@@ -141,7 +143,7 @@ export default function Feed() {
                                 titulo={postagem.titulo}
                                 descricao={postagem.descricao}
                             />
-
+                            </Link>
                         ))}
                     </div>
                 </div>
@@ -150,7 +152,9 @@ export default function Feed() {
                         <i className="fa fa-pencil" aria-hidden="true"></i>
                     </button>
                 </div>
+                <Footer />
             </div>
+            
         </>
     )
 }
