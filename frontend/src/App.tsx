@@ -4,6 +4,7 @@ import Cadastro from './pages/cadastro'
 import './App.css'
 import Feed from './pages/feed'
 import { AuthProvider } from './states/AuthContext'
+import Comentarios from './pages/comentarios'
 
 function App() {
 
@@ -23,6 +24,10 @@ function App() {
           <Route
           path="/"
           element={<Feed/>}
+          />
+          <Route
+          path="/postagem/:id"
+          element={<Comentarios/>}
           />
         </Routes>
         </AuthProvider>
