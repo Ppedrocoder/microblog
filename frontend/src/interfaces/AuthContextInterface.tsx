@@ -1,4 +1,8 @@
 import type UserInterface from "./UserInterface";
+
+// -----------------------------------------
+// Interface de Contexto de Autenticação
+// -----------------------------------------
 export interface AuthContextInterface {
   user: UserInterface | null;
   loading: boolean;

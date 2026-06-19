@@ -1,3 +1,8 @@
+import type { Autor } from "./AutorInterface";
+
+// -----------------------------------
+// Interface para Comentário
+// -----------------------------------
 export interface ComentarioInterface {
     id: string;
     autor: Autor;
@@ -6,8 +11,3 @@ export interface ComentarioInterface {
     publicado_em: string;
 }
 
-interface Autor {
-    id: string;
-    username: string;
-    nome: string;
-}

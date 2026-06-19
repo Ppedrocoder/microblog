@@ -1,3 +1,6 @@
+// -----------------------------------
+// Interface para Postagem
+// -----------------------------------
 export interface PostagemInterface{
     id: number;
     username: string;
