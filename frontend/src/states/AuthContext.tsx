@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import type UserInterface from "../interfaces/UserInterface";
-import { api } from "../services/ApiService";
+import { api } from "../services/common/ApiService";
 import type { AuthContextInterface } from "../interfaces/AuthContextInterface";
 
 export const AuthContext = createContext<AuthContextInterface | null>(null);
