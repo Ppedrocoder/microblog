@@ -44,7 +44,7 @@ export default function BrNavBar(props: NavBarProps) {
 							/>
 						</Link>
 					</div>
-					<div className="w-full h-full flex items-center justify-end pr-12">
+					<div className="w-full h-full flex items-center justify-end pr-10">
 						<div className="flex flex-col items-center gap-2 h-full">
 							<img
 								src={Avatar}
