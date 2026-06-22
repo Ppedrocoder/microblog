@@ -10,11 +10,11 @@ export default function BrPostagem(props: PostagemProps) {
 		<>
 			<div className="p-4 transition-transform duration-300 ease-in-out hover:scale-105 cursor-pointer">
 				<img
-					className="w-104 h-65 border border-transparent rounded-t-2xl"
+					className="w-114 h-65 border border-transparent rounded-t-2xl"
 					src={props.imagem}
 					alt={props.titulo}
 				/>
-				<div className="br-modal medium w-104 justify-center items-center">
+				<div className="br-modal medium w-114 justify-center items-center">
 					<div className="w-full h-full flex flex-col justify-start gap-2 p-4">
 						<div className="w-full flex flex-row gap-12">
 							<div className="w-full grid grid-cols-2 gap-12">
