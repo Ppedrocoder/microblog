@@ -42,9 +42,9 @@ export default function Feed() {
 	}
 	return (
 		<>
-			<div className="w-full h-screen overflow-y-auto flex flex-col ">
+			
+			<div className=" w-full h-screen overflow-y-auto flex flex-col ">
 				<BrNavBar nome={user?.username || "Usuário"} />
-
 				<div className="relative w-full flex flex-1 flex-col items-center mt-25">
                     
                     {/* Modal de Criação de Postagem */}
@@ -57,7 +57,7 @@ export default function Feed() {
 						/>
 					)}
 
-					<div className=" w-full grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 place-items-center gap-4 p-4">
+					<div className=" w-full grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 place-items-center gap-0 p-4">
 						{postagens.map((postagem: PostagemInterface) => (
 							<Link to={`/postagem/${postagem.id}`}>
 								<BrPostagem
@@ -74,12 +74,12 @@ export default function Feed() {
 						))}
 					</div>
 				</div>
-				<div className="sticky bottom-0 flex justify-end mr-4">
+				<div className="sticky bottom-0 flex justify-end">
 					<button
 						type="button"
 						disabled={showModal}
 						onClick={handleModal}
-						className="sticky br-button circle primary !mb-4 flex justify-center items-center"
+						className="sticky br-button circle primary !mb-4 !mr-10 flex justify-center items-center"
 					>
 						<i
 							className="fa fa-pencil"
@@ -89,6 +89,8 @@ export default function Feed() {
 				</div>
 				<BrFooter />
 			</div>
+			
+		
 		</>
 	);
 }
