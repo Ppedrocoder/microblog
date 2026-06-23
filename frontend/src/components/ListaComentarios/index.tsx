@@ -1,3 +1,4 @@
+import { memo } from "react";
 import type { ComentarioInterface } from "../../interfaces/ComentarioInterface";
 import formatarDataHora from "../../utils/formatarData";
 
@@ -5,7 +6,7 @@ interface ComentarioProps {
 	comentarios: ComentarioInterface[];
 }
 
-export default function ListaComentarios(props: ComentarioProps) {
+export default memo(function ListaComentarios(props: ComentarioProps) {
 	const { comentarios } = props;
 	return (
 		<>
@@ -30,4 +31,4 @@ export default function ListaComentarios(props: ComentarioProps) {
 			</div>
 		</>
 	);
-}
+})

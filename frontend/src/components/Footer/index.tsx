@@ -1,4 +1,6 @@
-export default function BrFooter() {
+import { memo } from "react";
+
+export default memo(function BrFooter() {
 	return (
 		<>
 			<footer className="br-footer">
@@ -14,4 +16,4 @@ export default function BrFooter() {
 			</footer>
 		</>
 	);
-}
+})

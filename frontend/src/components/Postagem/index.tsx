@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 type PostagemProps = {
 	autor: string;
 	titulo: string;
@@ -5,7 +7,7 @@ type PostagemProps = {
 	descricao: string;
 	dia: string;
 };
-export default function BrPostagem(props: PostagemProps) {
+export default memo(function BrPostagem(props: PostagemProps) {
 	return (
 		<>
 			<div className="p-4 transition-transform duration-300 ease-in-out hover:scale-105 cursor-pointer">
@@ -37,4 +39,4 @@ export default function BrPostagem(props: PostagemProps) {
 			</div>
 		</>
 	);
-}
+})
