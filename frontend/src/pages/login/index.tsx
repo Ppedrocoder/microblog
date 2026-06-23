@@ -8,6 +8,7 @@ import { useAuth } from "../../hooks/useAuth";
 import { api } from "../../services/common/ApiService";
 import { jwtDecode } from "jwt-decode";
 import type UserInterface from "../../interfaces/UserInterface";
+import BrButton from "../../components/Button";
 
 const LoginSchema = yup.object().shape({
 	usuario: yup.string().required("O campo de usuário é obrigatório"),
@@ -198,13 +199,7 @@ export default function Login() {
 									{errors.senha?.message ?? ""}
 								</p>
 							</div>
-							<button
-								type="submit"
-								disabled={carregando}
-								className="mx-auto mb-4 br-button primary !w-40"
-							>
-								Entrar
-							</button>
+							<BrButton className="primary mx-auto mb-4 !w-40" children="Entrar" disabled={carregando} />
 							<div className="mx-auto flex flex-col gap-0.5 text-center">
 								<p
 									className="!font-bold !m-0 !text-sm"

@@ -2,11 +2,12 @@ import Logo from "../../assets/images/logo-pnp-pura.png";
 import Avatar from "../../assets/images/avatar.svg";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
-import { useEffect } from "react";
+import { memo, useEffect } from "react";
+import BrButton from "../Button";
 interface NavBarProps {
 	nome: string;
 }
-export default function BrNavBar(props: NavBarProps) {
+export default memo(function BrNavBar(props: NavBarProps) {
 	const { logout, isLogged, loading } = useAuth();
 	function handleLogout() {
 		logout();
@@ -53,16 +54,14 @@ export default function BrNavBar(props: NavBarProps) {
 							/>
 							<p>Olá, {props.nome}</p>
 						</div>
-						<button
-							onClick={handleLogout}
-							className="br-button primary small ml-4"
-							type="button"
-						>
-							Sair
-						</button>
+						<BrButton
+							className="primary small ml-4"
+							children="Sair"
+							action={handleLogout}
+						/>
 					</div>
 				</div>
 			</div>
 		</>
 	);
-}
+});

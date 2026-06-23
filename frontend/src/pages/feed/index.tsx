@@ -7,6 +7,7 @@ import { api } from "../../services/common/ApiService";
 import type { PostagemInterface } from "../../interfaces/PostagemInterface";
 import BrFooter from "../../components/Footer";
 import BrPostagemForm from "../../components/PostagemForm";
+import BrButton from "../../components/Button";
 
 export default function Feed() {
 	const { isLogged, loading, user } = useAuth();
@@ -42,13 +43,11 @@ export default function Feed() {
 	}
 	return (
 		<>
-			
 			<div className=" w-full h-screen overflow-y-auto flex flex-col ">
 				<BrNavBar nome={user?.username || "Usuário"} />
 				<div className="relative w-full flex flex-1 flex-col items-center mt-25">
-                    
-                    {/* Modal de Criação de Postagem */}
-                    
+					{/* Modal de Criação de Postagem */}
+
 					{showModal && (
 						<BrPostagemForm
 							setShowModal={setShowModal}
@@ -57,7 +56,7 @@ export default function Feed() {
 						/>
 					)}
 
-					<div className=" w-full grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 place-items-center gap-0 p-4">
+					<div className=" w-[85%] grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 place-items-center gap-0 p-4">
 						{postagens.map((postagem: PostagemInterface) => (
 							<Link to={`/postagem/${postagem.id}`}>
 								<BrPostagem
@@ -75,22 +74,19 @@ export default function Feed() {
 					</div>
 				</div>
 				<div className="sticky bottom-0 flex justify-end">
-					<button
-						type="button"
-						disabled={showModal}
-						onClick={handleModal}
+					<BrButton
 						className="sticky br-button circle primary !mb-4 !mr-10 flex justify-center items-center"
-					>
-						<i
-							className="fa fa-pencil"
-							aria-hidden="true"
-						></i>
-					</button>
+						children={
+							<i
+								className="fa fa-pencil"
+								aria-hidden="true"
+							></i>
+						}
+						action={handleModal}
+					/>
 				</div>
 				<BrFooter />
 			</div>
-			
-		
 		</>
 	);
 }

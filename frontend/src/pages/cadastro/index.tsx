@@ -6,6 +6,7 @@ import * as yup from "yup";
 import { useNavigate, Navigate, Link } from "react-router-dom";
 import { api } from "../../services/common/ApiService";
 import { useAuth } from "../../hooks/useAuth";
+import BrButton from "../../components/Button";
 
 const CadastroSchema = yup.object().shape({
 	usuario: yup.string().required("O campo de usuário é obrigatório"),
@@ -259,12 +260,7 @@ export default function Cadastro() {
 										</p>
 									</div>
 								</div>
-								<button
-									disabled={carregando}
-									className="mx-auto mb-4 br-button primary !w-40"
-								>
-									Cadastrar
-								</button>
+								<BrButton className="primary mx-auto mb-4 !w-40" children="Cadastrar" disabled={carregando} />
 								<div className="mx-auto flex flex-col gap-0.5 text-center">
 									<p
 										className="!font-bold !m-0 !text-sm"

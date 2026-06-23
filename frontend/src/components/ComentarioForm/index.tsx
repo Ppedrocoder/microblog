@@ -3,6 +3,8 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import ComentarioService from "../../services/models/ComentarioService";
 import type { ComentarioInterface } from "../../interfaces/ComentarioInterface";
+import { memo } from "react";
+import BrButton from "../../components/Button";
 
 interface ComentarioFormProps {
 	postagemId: string;
@@ -15,7 +17,7 @@ const schema = yup.object().shape({
 
 type FormDataComentario = yup.InferType<typeof schema>;
 
-export default function BrComentarioForm(props: ComentarioFormProps) {
+export default memo(function BrComentarioForm(props: ComentarioFormProps) {
 	const {
 		register,
 		handleSubmit,
@@ -71,15 +73,14 @@ export default function BrComentarioForm(props: ComentarioFormProps) {
 								)}
 							</div>
 						</div>
-						<button
-							className="br-button primary !w-25 mb-4"
-							onClick={handleSubmit(onSubmit)}
-						>
-							Enviar
-						</button>
+						<BrButton
+							className="primary !w-25 mb-4"
+							action={handleSubmit(onSubmit)}
+							children="Enviar"
+						/>
 					</form>
 				</div>
 			</div>
 		</>
 	);
-}
+});
