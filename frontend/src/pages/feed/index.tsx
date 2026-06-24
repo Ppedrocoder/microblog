@@ -1,18 +1,31 @@
 import { Link, Navigate } from "react-router-dom";
-import BrNavBar from "../../components/NavBar";
+import formatarDataHora from "../../utils/formatarData";
 import { useAuth } from "../../hooks/useAuth";
-import BrPostagem from "../../components/Postagem";
 import { useEffect, useState } from "react";
 import { api } from "../../services/common/ApiService";
 import type { PostagemInterface } from "../../interfaces/PostagemInterface";
 import BrFooter from "../../components/Footer";
 import BrPostagemForm from "../../components/PostagemForm";
 import BrButton from "../../components/Button";
+import BrPostagem from "../../components/Postagem";
+import BrNavBar from "../../components/NavBar";
+
 
 export default function Feed() {
+	// -------------------------
+    // Hook de Autenticação
+    // -------------------------
 	const { isLogged, loading, user } = useAuth();
+
+	// -------------------------
+    // Estados Locais
+    // -------------------------
 	const [showModal, setShowModal] = useState(false);
 	const [postagens, setPostagens] = useState<PostagemInterface[]>([]);
+
+	// -------------------------
+    // Efeito para Buscar Postagem e Comentários
+    // -------------------------
 	useEffect(() => {
 		const getPostagens = async () => {
 			try {
@@ -26,15 +39,6 @@ export default function Feed() {
 
 		getPostagens();
 	}, []);
-	function formatarDataHora(dataISO: string) {
-		return new Date(dataISO).toLocaleString("pt-BR", {
-			day: "2-digit",
-			month: "2-digit",
-			year: "numeric",
-			hour: "2-digit",
-			minute: "2-digit",
-		});
-	}
 	function handleModal() {
 		setShowModal(!showModal);
 	}
