@@ -1,5 +1,35 @@
 import { memo } from "react";
 
+/**
+ * Componente de Postagem (`BrPostagem`), utilizado para exibir informações de uma postagem na página.
+ *
+ * Suporta a exibição de imagem, título, autor, descrição e data da postagem.
+ *
+ * @param autor - O autor da postagem.
+ * @param titulo - O título da postagem.
+ * @param imagem - A URL da imagem da postagem.
+ * @param descricao - A descrição da postagem.
+ * @param dia - A data da postagem.
+ * 
+ * @returns Um elemento JSX representando a postagem de determinado usuário.
+ *
+ * @example
+ * ```tsx
+ * <BrPostagem 
+ * 		autor="Pedro Ricardo" 
+ * 		titulo="Minha Postagem" 
+ * 		imagem="/path/to/image.jpg" 
+ * 		descricao="Descrição da postagem" 
+ * 		dia="25/06/2026" 
+ * />
+ * ```
+ *
+ * @author Pedro Ricardo
+ * @since 25/06/2026
+ * @updated 25/06/2026
+ * @version 1.0.0
+ */
+
 type PostagemProps = {
 	autor: string;
 	titulo: string;

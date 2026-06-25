@@ -6,6 +6,29 @@ import type { ComentarioInterface } from "../../interfaces/ComentarioInterface";
 import { memo } from "react";
 import BrButton from "../../components/Button";
 
+/**
+ * Componente de Formulário de Comentário (`ComentarioForm`), utilizado para criar comentários em 
+ * uma postagem específica.
+ *
+ * Suporta criação de comentários com validação de campos, integração com o backend e 
+ * atualização da lista de comentários.
+ *
+ * @param postagemId - O ID da postagem à qual o comentário pertence.
+ * @param setComentarios - Função para atualizar a lista de comentários.
+ *
+ * @returns Um elemento JSX representando o fomulário para registrar um comentário.
+ *
+ * @example
+ * ```tsx
+ * <BrComentarioForm postagemId="123" setComentarios={setComentarios} />
+ * ```
+ *
+ * @author Pedro Ricardo
+ * @since 25/06/2026
+ * @updated 25/06/2026
+ * @version 1.0.0
+ */
+
 interface ComentarioFormProps {
 	postagemId: string;
 	setComentarios: React.Dispatch<React.SetStateAction<ComentarioInterface[]>>;

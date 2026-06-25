@@ -4,6 +4,32 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { api } from "../../services/common/ApiService";
 import type { PostagemInterface } from "../../interfaces/PostagemInterface";
 
+/**
+ * Componente de Formulário de Postagem (`BrPostagemForm`), utilizado para permitir que os usuários criem novas postagens.
+ *
+ * Suporta a validação de campos e o envio de dados para o backend.
+ *
+ * @param setShowModal - Função para controlar a exibição do modal.
+ * @param showModal - Estado que controla a exibição do modal.
+ * @param setPostagens - Função para atualizar a lista de postagens.
+ *
+ * @returns Um elemento JSX representando o formulário de postagem.
+ *
+ * @example
+ * ```tsx
+ * <BrPostagemForm
+ * 		setShowModal={setShowModal}
+ * 		showModal={showModal}
+ * 		setPostagens={setPostagens}
+ * />
+ * ```
+ *
+ * @author Pedro Ricardo
+ * @since 25/06/2026
+ * @updated 25/06/2026
+ * @version 1.0.0
+ */
+
 interface PostagemFormProps {
 	setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
 	showModal: boolean;

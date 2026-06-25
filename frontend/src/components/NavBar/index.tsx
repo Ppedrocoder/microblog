@@ -4,6 +4,27 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { memo, useEffect } from "react";
 import BrButton from "../Button";
+
+/**
+ * Componente de Barra de Navegação (`BrNavBar`), utilizado para exibir uma barra de navegação na página.
+ *
+ * Suporta a exibição do logo, avatar do usuário e opções de navegação.
+ *
+ * @param nome - O nome do usuário logado.
+ *
+ * @returns Um elemento JSX representando a barra de navegação.
+ *
+ * @example
+ * ```tsx
+ * <BrNavBar nome="Pedro Ricardo" />
+ * ```
+ *
+ * @author Pedro Ricardo
+ * @since 25/06/2026
+ * @updated 25/06/2026
+ * @version 1.0.0
+ */
+
 interface NavBarProps {
 	nome: string;
 }

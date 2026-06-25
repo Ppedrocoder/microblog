@@ -2,6 +2,27 @@ import { memo } from "react";
 import type { ComentarioInterface } from "../../interfaces/ComentarioInterface";
 import formatarDataHora from "../../utils/formatarData";
 
+/**
+ * Componente de Lista de Comentários (`ListaComentarios`), utilizado para exibir uma lista de comentários
+ * associados a uma postagem específica.
+ *
+ * Suporta a exibição de informações do autor, data e hora da publicação e o conteúdo do comentário.
+ *
+ * @param comentarios - Array de objetos representando os comentários a serem exibidos.
+ *
+ * @returns Um elemento JSX representando a lista de comentários.
+ *
+ * @example
+ * ```tsx
+ * <ListaComentarios comentarios={comentarios} />
+ * ```
+ *
+ * @author Pedro Ricardo
+ * @since 25/06/2026
+ * @updated 25/06/2026
+ * @version 1.0.0
+ */
+
 interface ComentarioProps {
 	comentarios: ComentarioInterface[];
 }

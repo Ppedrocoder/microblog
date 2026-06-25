@@ -1,5 +1,23 @@
 import { memo } from "react";
 
+/**
+ * Componente de Rodapé (`BrFooter`), utilizado para exibir informações de rodapé na página.
+ *
+ * Suporta a exibição de marca, informações de contato e links úteis.
+ *
+ * @returns Um elemento JSX representando o rodapé da página.
+ *
+ * @example
+ * ```tsx
+ * <BrFooter />
+ * ```
+ *
+ * @author Pedro Ricardo
+ * @since 25/06/2026
+ * @updated 25/06/2026
+ * @version 1.0.0
+ */
+
 export default memo(function BrFooter() {
 	return (
 		<>
